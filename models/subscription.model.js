@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const subscriptionSchema=new mongoose.Schema({
 
     name:{
-        type:string;
+        type: String,
         required:[true,'subscription name is required'],
         trim:true,
         minlength:2,

@@ -23,7 +23,8 @@ export const signup=async(req,res,next)=>{
 
         const hashpassword=await bcrypt.hash(password,salt);
 
-        const newuser=await User.create([{name,email,password:hashpassword}],{session});
+        const newusers=await User.create([{name,email,password:hashpassword}],{session});
+        const newuser=newusers[0];
 
         const token=jwt.sign({userId:newuser._id}, JWT_SECRET,{expiresIn:JWT_EXPIRES_IN});
 
@@ -93,5 +94,5 @@ export const signin=async(req,res,next)=>{
 }
 
 export const signout=async(req,res,next)=>{
-
+    // TODO: Implement signout logic
 }
